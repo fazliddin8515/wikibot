@@ -1,13 +1,16 @@
 import asyncio
 import wikipedia
+import os
 
 from aiogram import Bot, Dispatcher
 from aiogram.filters import Command
 from aiogram.types import Message
+from dotenv import load_dotenv
 
+load_dotenv()
 wikipedia.set_lang("uz")
 
-bot = Bot("7808069346:AAEi4JcH2Okd7v5ulELTm4NxhLEfjq_94-I")
+bot = Bot(os.getenv("BOT_TOKEN"))
 dp = Dispatcher()
 
 
