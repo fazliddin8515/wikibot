@@ -26,8 +26,14 @@ async def start_handler(message: Message):
 @dp.message(Command("wiki"))
 async def wiki_handler(message: Message):
     title = message.text[6:]
-    summary = wikipedia.summary(title)
-    await message.answer(summary)
+    if title == "":
+        return await message.answer("/wiki dan keyin kluch kiriting!")
+
+    if len(wikipedia.search(title)) > 0:
+        summary = wikipedia.summary(title)
+        await message.answer(summary)
+    else:
+        await message.answer("Bunday ma'lumot topilmadi.")
 
 
 async def main():
